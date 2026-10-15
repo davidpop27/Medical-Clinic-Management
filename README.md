@@ -1,44 +1,44 @@
-🏥 Sistem de Gestiune Clinică Medicală (Java & Hibernate)
-Acest proiect reprezintă o soluție software completă pentru administrarea unei clinici medicale. Aplicația facilitează interacțiunea dintre medici și pacienți, gestionând programările și istoricul medical printr-o arhitectură modulară.
+# 🏥 Medical Clinic Management System (Java & Hibernate)
 
-💎 Arhitectura și Concepte POO
-Proiectul a fost structurat pentru a demonstra utilizarea avansată a programării orientate pe obiecte:
+A modular desktop clinic management application designed to streamline healthcare workflows. The system facilitates interactions between doctors and patients, handling appointment scheduling, medical records, and digital prescriptions through an object-oriented, layered architecture backed by an ORM.
 
-Încapsulare: Datele sensibile din clase precum Pacient, Doctor sau User sunt protejate prin modificatori de acces privați și accesate exclusiv prin metode de tip getter/setter.
+---
 
-Abstractizare prin Servicii: Logica complexă de business este izolată în stratul de servicii (ex: AppointmentService, AuthService), separând procesarea datelor de interfața cu utilizatorul.
+## 💎 Architecture & OOP Principles
 
-Utilizarea Enumerărilor: Rolurile utilizatorilor sunt gestionate prin tipul UserRole (PATIENT, DOCTOR), asigurând o clasificare clară a accesului în sistem.
+The application is structured around enterprise design patterns and object-oriented principles:
 
-Gestiunea Persistenței: Utilizarea Hibernate și a clasei HibernateUtil permite maparea obiectelor Java direct pe o bază de date relațională.
+- **Encapsulation:** Domain models (`Patient`, `Doctor`, `User`) enforce strict data integrity using private fields and validated accessor/mutator methods.
+- **Service-Oriented Layering:** Business logic is decoupled from presentation and isolated into service classes (`AppointmentService`, `AuthService`), ensuring a clear separation of concerns.
+- **Role-Based Access Control:** Strong typing with `UserRole` enums (`PATIENT`, `DOCTOR`) manages permission tiers and feature access.
+- **ORM Persistence:** Utilizes **Hibernate / JPA** (configured via `HibernateUtil` and `persistence.xml`) for object-relational mapping to a relational database, abstracting SQL queries into managed entity lifecycles.
 
-🚀 Funcționalități Principale
-Aplicația oferă un set de instrumente esențiale pentru managementul medical:
+---
 
-Autentificare și Roluri: Sistemul permite logarea securizată a utilizatorilor în funcție de rolul atribuit (Medic sau Pacient).
+## 🚀 Key Features
 
-Managementul Programărilor: Utilizatorii pot crea și vizualiza programări medicale prin intermediul AppointmentService.
+- **Authentication & RBAC:** Secure user login and authorization routing depending on assigned privileges (Doctor vs. Patient).
+- **Appointment Scheduling:** Patients and staff can schedule, review, and organize medical consultations via `AppointmentService`.
+- **Medical Records & Prescriptions:** Healthcare providers can maintain structured patient medical histories and generate digital prescriptions.
+- **Interactive Console UI:** Clean, menu-driven CLI interface driven by `ConsoleMenu` and standard input streams.
 
-Dosar Medical și Prescripții: Medicii pot gestiona istoricul medical al pacienților și pot emite prescripții digitale.
+---
 
-Meniu Interactiv: Interfața de tip consolă (ConsoleMenu) oferă o navigare intuitivă prin toate modulele aplicației.
+## 🛠️ Tech Stack
 
-🛠️ Stack Tehnologic
-Limbaj: Java
+- **Language:** Java (JDK 17+)
+- **ORM & Persistence:** Hibernate / JPA (`persistence.xml`)
+- **Build & Dependency Management:** Apache Maven (`pom.xml`)
+- **Database:** Relational SQL (configured through Hibernate dialect)
+- **UI:** Console Interface (`java.util.Scanner`)
 
-ORM (Persistență): Hibernate / JPA (configurat prin persistence.xml)
+---
 
-Management Proiect: Maven (gestiune prin pom.xml)
+## 📁 Project Structure
 
-Interfață: Console UI (bazată pe clasa Scanner)
-
-📁 Structura Proiectului
-Codul sursă este organizat în pachete specifice pentru a menține o structură curată:
-
-org.example.Model: Entitățile de bază (Doctor, Pacient, User, etc.).
-
-org.example.Servicii: Logica de business pentru programări, pacienți și medici.
-
-org.example.Controller: Gestionarea meniului principal prin ConsoleMenu.
-
-org.example.Database: Configurarea utilitară pentru Hibernate.
+```text
+src/main/java/org/example/
+├── Model/          # Domain entities (Doctor, Patient, User, etc.)
+├── Servicii/       # Business logic layer (AppointmentService, AuthService, etc.)
+├── Controller/     # Presentation logic and console menu routing (ConsoleMenu)
+└── Database/       # Hibernate configuration and session factory utilities (HibernateUtil)
